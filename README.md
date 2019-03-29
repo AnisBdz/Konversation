@@ -1,7 +1,6 @@
 # konversation
 
-> Converstaional forms using vuejs
-
+> Converstaional forms vuejs component
 ## Build Setup
 
 ``` bash

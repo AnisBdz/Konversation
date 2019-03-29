@@ -1,7 +1,3 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Konversation from './components/Konversation'
 
-window.app = new Vue({
-  el: '#app',
-  render: h => h(App)
-})
+module.exports = Konversation
