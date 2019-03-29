@@ -11,7 +11,7 @@
 <script>
 
 import Message from './Message.vue'
-import Question from './Question'
+import Question from './Question.vue'
 
 export default {
     components: { Message, Question },
@@ -77,15 +77,21 @@ export default {
         },
 
         ask(question, type = 'text', options) {
+
+            let opts = {
+                type
+            }
+
+            for (let key in options) {
+                opts[key] = options[key]
+            }
+
             return this.wait(this.timeout)
             .then(() => {
                 this.items.push({
                     type: 'question',
                     content: question,
-                    options: {
-                        type,
-                        ...options
-                    }
+                    options: opts
                 })
 
                 return new Promise((resolve, reject) => {

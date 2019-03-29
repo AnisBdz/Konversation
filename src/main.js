@@ -1,3 +1,3 @@
-import Konversation from './components/Konversation'
+import Konversation from './components/Konversation.vue'
 
-module.exports = Konversation
+export default Konversation

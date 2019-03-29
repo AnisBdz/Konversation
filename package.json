@@ -1,14 +1,22 @@
 {
   "name": "konversation-vue",
   "description": "Converstaional forms vuejs component",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "author": "Anis BOUCHEKHIMA <bdzanis.ab@gmail.com>",
   "license": "MIT",
   "private": false,
-  "main": "dist/build.js",
+  "main": "dist/konversation.umd.js",
+  "module": "dist/konversation.esm.js",
+  "unpkg": "dist/konversation.min.js",
+  "browser": {
+    "./component": "src/components/Konversation.vue"
+  },
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
+    "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/konversation.umd.js",
+    "build:es": "rollup --config build/rollup.config.js --format es --file dist/konversation.esm.js",
+    "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/konversation.min.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -28,6 +36,9 @@
     "css-loader": "^0.28.7",
     "file-loader": "^1.1.4",
     "node-sass": "^4.5.3",
+    "rollup-plugin-buble": "^0.19.6",
+    "rollup-plugin-commonjs": "^9.2.2",
+    "rollup-plugin-vue": "^4.7.2",
     "sass-loader": "^6.0.6",
     "vue-loader": "^13.0.5",
     "vue-template-compiler": "^2.4.4",
